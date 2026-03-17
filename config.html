@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Báo Trực KHTH – Bệnh viện Quân y 121</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --navy:        #0c1a38;
+  --navy-light:  #152447;
+  --navy-border: rgba(255,255,255,0.1);
+  --blue:        #185FA5;
+  --blue-mid:    #378ADD;
+  --blue-pale:   #E6F1FB;
+  --teal:        #0F6E56;
+  --teal-mid:    #1D9E75;
+  --teal-pale:   #E1F5EE;
+  --amber:       #945E0D;
+  --amber-mid:   #EF9F27;
+  --amber-pale:  #FFF3DC;
+  --coral:       #993C1D;
+  --coral-mid:   #D85A30;
+  --coral-pale:  #FAECE7;
+  --red:         #A32D2D;
+  --red-mid:     #E24B4A;
+  --red-pale:    #FCEBEB;
+  --purple:      #534AB7;
+  --purple-pale: #EEEDFE;
+  --bg:          #EEF1F6;
+  --bg-card:     #FFFFFF;
+  --bg-sub:      #F6F8FB;
+  --text:        #1a2030;
+  --text-2:      #06764d;
+  --text-3:      #9aa3b4;
+  --border:      #E2E7EF;
+  --radius:      10px;
+  --radius-sm:   6px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;}
+
+/* ===== HEADER ===== */
+.header{background:#06764d;}
+.header-band{
+  padding:6px 28px;
+  background:var(--navy-light);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;
+  color:rgba(255,255,255,.4);
+  border-bottom:1px solid var(--navy-border);
+}
+.header-main{
+  padding:18px 28px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.header-logo{
+  display:flex;align-items:center;gap:14px;
+}
+.star-emblem{
+  width:46px;height:46px;flex-shrink:0;
+}
+.header-title h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:.2px;}
+.header-title .sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:2px;}
+.header-date{text-align:right;}
+.date-big{font-size:26px;font-weight:300;color:#fff;line-height:1;}
+.date-label{font-size:10.5px;color:rgba(255,255,255,.4);margin-top:3px;letter-spacing:.5px;}
+.duty-bar{
+  background:rgba(0,0,0,.15);
+  border-top:1px solid var(--navy-border);
+  padding:9px 28px;
+  display:flex;gap:36px;flex-wrap:wrap;
+  font-size:11.5px;color:rgba(255,255,255,.65);
+}
+.duty-item{display:flex;align-items:center;gap:7px;}
+.duty-dot{width:5px;height:5px;border-radius:50%;background:#EF9F27;flex-shrink:0;}
+.duty-item strong{color:rgba(255,255,255,.88);font-weight:500;}
+
+/* ===== LAYOUT ===== */
+.page{padding:18px 28px 28px;max-width:1380px;margin:0 auto;}
+
+/* ===== SECTION HEADER ===== */
+.sec{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:1px;
+  color:var(--text-2);margin:0 0 10px;padding-bottom:7px;
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.sec::before{content:'';display:block;width:3px;height:14px;border-radius:2px;background:var(--blue);}
+.sec.mt{margin-top:20px;}
+
+/* ===== KPI GRID ===== */
+.kpi-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-bottom:18px;}
+.kpi-card{
+  background:var(--bg-card);border-radius:var(--radius);
+  padding:13px 14px 12px;
+  border-top:3px solid transparent;
+  box-shadow:0 1px 3px rgba(20,40,80,.06);
+}
+.kpi-card.c-blue  {border-color:var(--blue);}
+.kpi-card.c-teal  {border-color:var(--teal-mid);}
+.kpi-card.c-amber {border-color:var(--amber-mid);}
+.kpi-card.c-red   {border-color:var(--red-mid);}
+.kpi-card.c-coral {border-color:var(--coral-mid);}
+.kpi-card.c-purple{border-color:var(--purple);}
+
+.kpi-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;color:var(--text-2);margin-bottom:6px;}
+.kpi-val{font-size:24px;font-weight:700;line-height:1;}
+.kpi-val.blue  {color:var(--blue);}
+.kpi-val.teal  {color:var(--teal);}
+.kpi-val.amber {color:var(--amber);}
+.kpi-val.red   {color:var(--red);}
+.kpi-val.coral {color:var(--coral);}
+.kpi-val.purple{color:var(--purple);}
+.kpi-sub{font-size:10.5px;color:var(--text-3);margin-top:4px;}
+
+/* ===== CHARTS AREA ===== */
+.charts-row{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;margin-bottom:18px;}
+.card{background:var(--bg-card);border-radius:var(--radius);padding:16px;box-shadow:0 1px 3px rgba(20,40,80,.06);}
+.card-title{font-size:12px;font-weight:600;color:var(--text);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;}
+.card-badge{font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;background:var(--blue-pale);color:var(--blue);}
+.legend-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.legend-item{display:flex;align-items:center;gap:4px;font-size:10.5px;color:var(--text-2);}
+.legend-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
+
+/* ===== WARD TABLE ===== */
+.table-wrap{background:var(--bg-card);border-radius:var(--radius);box-shadow:0 1px 3px rgba(20,40,80,.06);overflow:hidden;margin-bottom:18px;}
+.ward-table{width:100%;border-collapse:collapse;font-size:12px;}
+.ward-table th{
+  background:var(--bg-sub);padding:7px 11px;
+  font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.3px;
+  color:var(--text-2);text-align:center;border-bottom:1px solid var(--border);
+}
+.ward-table th.left{text-align:left;}
+.ward-table td{padding:6px 11px;border-bottom:1px solid #F0F3F8;text-align:center;color:var(--text);}
+.ward-table td.left{text-align:left;font-weight:500;}
+.ward-table tr:last-child td{border-bottom:none;}
+.ward-table tfoot td{background:var(--bg-sub);font-weight:700;color:var(--blue);border-top:1.5px solid var(--border);}
+.ward-table tfoot td.left{text-align:left;}
+.ward-table tr:hover td{background:#F7F9FD;}
+
+.badge-up  {display:inline-block;padding:1px 5px;border-radius:4px;font-size:10.5px;font-weight:600;background:var(--teal-pale);color:var(--teal);}
+.badge-dn  {display:inline-block;padding:1px 5px;border-radius:4px;font-size:10.5px;font-weight:600;background:var(--red-pale);color:var(--red);}
+.badge-eq  {display:inline-block;padding:1px 5px;border-radius:4px;font-size:10.5px;font-weight:600;background:#F0F3F8;color:var(--text-2);}
+
+/* Ward type labels */
+.ward-a{color:var(--blue);font-weight:700;}
+.ward-b{color:var(--coral);font-weight:700;}
+
+/* ===== BOTTOM AREA ===== */
+.bottom-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:12px;}
+.right-col{display:flex;flex-direction:column;gap:12px;}
+
+/* Military table */
+.mil-table-wrap{background:var(--bg-card);border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 3px rgba(20,40,80,.06);}
+.mil-table-head{
+  background:#06764d;padding:11px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.mil-table-head .title{font-size:12px;font-weight:600;color:#fff;}
+.mil-table-head .count{font-size:11px;color:rgba(255,255,255,.5);}
+.mil-table{width:100%;border-collapse:collapse;font-size:11.5px;}
+.mil-table th{
+  padding:6px 10px;background:#1a2f5e;
+  font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;
+  color:rgba(255,255,255,.55);text-align:left;
+}
+.mil-table td{padding:6px 10px;border-bottom:1px solid #F0F3F8;vertical-align:middle;}
+.mil-table tr:nth-child(even) td{background:#FAFBFD;}
+.mil-table tr:last-child td{border-bottom:none;}
+.mil-id{font-weight:700;font-variant-numeric:tabular-nums;color:var(--text-3);width:22px;}
+.mil-name{font-weight:600;color:var(--text);}
+.rank-pill{
+  display:inline-block;padding:1px 6px;border-radius:3px;
+  font-size:10px;font-weight:600;
+  background:var(--amber-pale);color:var(--amber);white-space:nowrap;
+}
+.ward-pill{
+  display:inline-block;padding:1px 6px;border-radius:3px;
+  font-size:10px;font-weight:600;
+  background:var(--blue-pale);color:var(--blue);
+}
+
+/* Services grid */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.svc-item{
+  background:var(--bg-sub);border-radius:var(--radius-sm);
+  padding:8px 12px;display:flex;align-items:center;justify-content:space-between;
+}
+.svc-label{font-size:11.5px;color:var(--text-2);font-weight:500;}
+.svc-val{font-size:17px;font-weight:700;color:var(--blue);}
+
+/* Surgery card */
+.surgery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;}
+.surgery-item{
+  background:var(--bg-sub);border-radius:var(--radius-sm);
+  padding:10px 10px 8px;text-align:center;
+}
+.surgery-label{font-size:10px;color:var(--text-3);font-weight:600;text-transform:uppercase;letter-spacing:.3px;}
+.surgery-val{font-size:20px;font-weight:700;margin-top:3px;}
+
+/* Assessment box */
+.assess-card{
+  background:#06764d;border-radius:var(--radius);padding:14px 16px;
+}
+.assess-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.4);margin-bottom:9px;}
+.assess-item{font-size:12px;color:rgba(255,255,255,.78);line-height:1.6;margin-bottom:6px;}
+.assess-item strong{color:rgba(255,255,255,.92);}
+.assess-sig{font-size:10.5px;color:rgba(255,255,255,.35);margin-top:10px;font-style:italic;border-top:1px solid rgba(255,255,255,.08);padding-top:8px;}
+
+/* Dialysis mini cards */
+.dialysis-row{display:flex;gap:7px;}
+.dial-card{flex:1;background:var(--bg-sub);border-radius:var(--radius-sm);padding:8px 10px;text-align:center;}
+.dial-label{font-size:10px;color:var(--text-3);font-weight:500;}
+.dial-val{font-size:18px;font-weight:700;color:var(--blue);margin-top:2px;}
+
+/* ===== FOOTER ===== */
+.footer{
+  text-align:center;padding:14px 28px;font-size:11px;color:var(--text-3);
+  border-top:1px solid var(--border);margin-top:6px;
+}
+
+/* ===== PROGRESS BAR ===== */
+.prog-bar{background:#E8EDF5;border-radius:3px;height:6px;overflow:hidden;margin-top:5px;}
+.prog-fill{height:100%;border-radius:3px;}
+
+@media(max-width:1100px){
+  .kpi-grid{grid-template-columns:repeat(4,1fr);}
+  .charts-row{grid-template-columns:1fr 1fr;}
+  .bottom-grid{grid-template-columns:1fr;}
+}
+.svc-grid {
+    display: flex;
+    flex-direction: column; /* xếp dọc */
+    gap: 10px;
+}
+.btn-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* cột trái */
+.left {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 15px 25px;
+}
+
+/* cột phải */
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* style nút */
+.btn-item {
+    padding: 12px 20px;
+    background: #d9d9d9;
+    border: 1px solid #888;
+    box-shadow: 2px 2px 0 #999;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* hiệu ứng bấm */
+.btn-item:active {
+    box-shadow: inset 2px 2px 5px #999;
+}
+</style>
+</head>
+<body>
+
+
+
+
+<div class="page">
+
+  
+  
+
+ 
+
+  <!-- ===== BOTTOM SECTION ===== -->
+  <div class="sec mt">Báo Cáo</div>
+  <div class="bottom-grid">
+
+    <!-- Military patients -->
+    <div class="mil-table-wrap">
+      <div class="mil-table-head">
+        <span class="title">Báo Cáo</span>
+      
+      </div>
+        <div class="card">
+          <div class="svc-grid">
+  <div class="svc-item">
+    <span class="svc-label">Start</span>
+    <span class="svc-val">15/03/2026 5:30</span>
+    <span class="svc-day">Sunday</span>
+  </div>
+
+  <div class="svc-item">
+    <span class="svc-label">End</span>
+    <span class="svc-val">16/03/2026 5:29</span>
+    <span class="svc-day">Monday</span>
+  </div>
+
+  <div class="svc-item">
+    <span class="svc-label">Start A3</span>
+    <span class="svc-val">15/03/2026 3:00</span>
+    <span class="svc-day">Sunday</span>
+  </div>
+
+  <div class="svc-item">
+    <span class="svc-label">End A3</span>
+    <span class="svc-val">16/03/2026 2:59</span>
+    <span class="svc-day">Monday</span>
+  </div>
+
+  <div class="svc-item">
+    <span class="svc-label">Start Ngoài Giờ</span>
+    <span class="svc-val">15/03/2026 13:00</span>
+    <span class="svc-day">Sunday</span>
+  </div>
+
+  <div class="svc-item">
+    <span class="svc-label">End Ngoài Giờ</span>
+    <span class="svc-val">15/03/2026 16:30</span>
+    <span class="svc-day">Sunday</span>
+  </div>
+
+  <div class="svc-item">
+    <span class="svc-label">Start Khám Bệnh</span>
+    <span class="svc-val">15/03/2026 5:30</span>
+    <span class="svc-day">Sunday</span>
+  </div>
+
+  <div class="svc-item">
+    <span class="svc-label">End Khám Bệnh</span>
+    <span class="svc-val">15/03/2026 11:00</span>
+    <span class="svc-day">Sunday</span>
+  </div>
+</div>
+      </div>
+      
+    </div>
+
+    <!-- Right column -->
+    <div class="right-col">
+
+      <!-- Clinical services -->
+      <div class="card">
+        <div class="svc-grid">
+          <div class="svc-item">
+            <span class="svc-label">Máy chủ</span>
+            <span class="svc-val">172.251.110.5</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-label">Database</span>
+            <span class="svc-val" style="color:var(--teal);">CT1212019</span>
+          </div>
+          
+        </div>
+      </div>
+      <!-- Surgery breakdown -->
+        <div class="card">
+        
+        <div class="svc-grid">
+          <div class="svc-item">
+            <span class="svc-label">Trực Chỉ Huy</span>
+            <span class="svc-val">Đại tá Nguyễn Tấn Phong</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-label">Trực KHTH</span>
+            <span class="svc-val" style="color:var(--teal);">Trung tá CN Trần Kim Ngọc</span>
+          </div>  
+        </div>
+      </div>
+
+    
+      
+
+      <!-- Assessment -->
+      <div class="assess-card">
+        <div class="assess-item">
+          <strong>Số lượng bản in:</strong> 6
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== KPI ROW ===== -->
+  
+  <div class="btn-layout " style="padding-top: 10px;">
+
+  <!-- CỘT TRÁI -->
+  <div class="left">
+    <button class="btn-item">Lấy báo cáo khám bệnh</button>
+    <button class="btn-item">Lấy báo cáo giao ban 05h30</button>
+    <button class="btn-item">Lấy số liệu trong ngày</button>
+    <button class="btn-item">Lấy cả tuần hiện tại</button>
+    <button class="btn-item">Lấy báo cáo theo ngày tùy chỉnh</button>
+    <button class="btn-item">Xuất file PDF</button>
+    <button class="btn-item">In báo cáo</button>
+    <button class="btn-item">Xuất file PDF khám bệnh</button>
+  </div>
+
+  <!-- CỘT PHẢI -->
+  <div class="right">
+    <button class="btn-item">Chọn máy 110.5</button>
+    <button class="btn-item">Chọn máy 110.4</button>
+  </div>
+
+</div>
+
+
+</div>
+
+
+
+
+<script>
+// Chart 1: Donut – Zones
+new Chart(document.getElementById('chartZone'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Phòng khám', 'Khám yêu cầu', 'Cấp cứu'],
+    datasets: [{
+      data: [935, 297, 66],
+      backgroundColor: ['#185FA5', '#EF9F27', '#E24B4A'],
+      borderWidth: 2,
+      borderColor: '#FFFFFF',
+      hoverOffset: 5
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '62%',
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.label}: ${ctx.raw} lượt (${Math.round(ctx.raw/1298*100)}%)`
+        }
+      }
+    }
+  }
+});
+
+// Chart 2: Horizontal bar – CĐHA
+new Chart(document.getElementById('chartCDHA'), {
+  type: 'bar',
+  data: {
+    labels: ['Siêu âm', 'CT Scan', 'X-quang', 'Nội soi', 'MRI'],
+    datasets: [{
+      data: [562, 364, 605, 27, 3],
+      backgroundColor: ['#185FA5', '#1D9E75', '#EF9F27', '#D85A30', '#7F77DD'],
+      borderRadius: 4,
+      borderSkipped: false
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.raw.toLocaleString('vi-VN')}` } }
+    },
+    scales: {
+      x: {
+        grid: { color: '#F0F3F8' },
+        ticks: { font: { size: 10 }, color: '#9aa3b4', callback: v => v >= 1000 ? (v/1000).toFixed(1)+'k' : v }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 11 }, color: '#5a6377' }
+      }
+    }
+  }
+});
+
+// Chart 3: Stacked bar – XN by payer
+new Chart(document.getElementById('chartXN'), {
+  type: 'bar',
+  data: {
+    labels: ['BHYT', 'Dịch vụ', 'QN/CS'],
+    datasets: [{
+      label: 'Xét nghiệm',
+      data: [2252, 2433, 552],
+      backgroundColor: ['#185FA5', '#EF9F27', '#1D9E75'],
+      borderRadius: 5,
+      borderSkipped: false
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.raw.toLocaleString('vi-VN')} xét nghiệm`
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 }, color: '#5a6377' } },
+      y: {
+        grid: { color: '#F0F3F8' },
+        ticks: {
+          font: { size: 10 }, color: '#9aa3b4',
+          callback: v => v >= 1000 ? (v/1000).toFixed(1)+'k' : v
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
