@@ -33,7 +33,7 @@
   --bg-card:     #FFFFFF;
   --bg-sub:      #F6F8FB;
   --text:        #1a2030;
-  --text-2:      #06764d;
+  --text-2:      #5a6377;
   --text-3:      #9aa3b4;
   --border:      #E2E7EF;
   --radius:      10px;
@@ -43,7 +43,7 @@
 body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;}
 
 /* ===== HEADER ===== */
-.header{background:#06764d;}
+.header{background:var(--navy);}
 .header-band{
   padding:6px 28px;
   background:var(--navy-light);
@@ -153,7 +153,7 @@ body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:var(--bg);colo
 /* Military table */
 .mil-table-wrap{background:var(--bg-card);border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 3px rgba(20,40,80,.06);}
 .mil-table-head{
-  background:#06764d;padding:11px 16px;
+  background:var(--navy);padding:11px 16px;
   display:flex;align-items:center;justify-content:space-between;
 }
 .mil-table-head .title{font-size:12px;font-weight:600;color:#fff;}
@@ -200,7 +200,7 @@ body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:var(--bg);colo
 
 /* Assessment box */
 .assess-card{
-  background:#06764d;border-radius:var(--radius);padding:14px 16px;
+  background:var(--navy);border-radius:var(--radius);padding:14px 16px;
 }
 .assess-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.4);margin-bottom:9px;}
 .assess-item{font-size:12px;color:rgba(255,255,255,.78);line-height:1.6;margin-bottom:6px;}
@@ -228,52 +228,6 @@ body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:var(--bg);colo
   .charts-row{grid-template-columns:1fr 1fr;}
   .bottom-grid{grid-template-columns:1fr;}
 }
-.svc-grid {
-    display: flex;
-    flex-direction: column; /* xếp dọc */
-    gap: 10px;
-}
-.btn-layout {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-}
-
-/* cột trái */
-.left {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 15px 25px;
-}
-
-/* cột phải */
-.right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* style nút */
-.btn-item {
-    padding: 12px 20px;
-    background: #d9d9d9;
-    border: 1px solid #888;
-    box-shadow: 2px 2px 0 #999;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* hiệu ứng bấm */
-.btn-item:active {
-    box-shadow: inset 2px 2px 5px #999;
-}
-.svc-val {
-    font-family: monospace;
-    width: 180px;
-    display: inline-block;
-    text-align: right;
-}
-
 </style>
 </head>
 <body>
@@ -282,143 +236,195 @@ body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:var(--bg);colo
 
 
 <div class="page">
-  <!-- ===== BOTTOM SECTION ===== -->
-  <div class="sec mt">Báo Cáo</div>
-  <div class="bottom-grid">
+  <!-- ===== WARD TABLE ===== -->
+  <div class="sec mt">BÁO CÁO KHÁM GIỜ HÀNH CHÍNH</div>
+  <div>Từ 05:30 ngày 15/03/2026 đến 11:00 ngày 15/03/2026</div>
+  <div class="table-wrap">
+    <table class="ward-table">
+      <thead>
+        <tr>
+          <th class="left" style="width:56px;">TT</th>
+          <th>Số PK</th>
+          <th>Chuyên ngành</th>
+          <th>Khoa</th>
+          <th>Bác Sĩ</th>
+          <th>Tổng</th>
+          <th style="color:var(--blue);">QN</th>
+          <th>BHA</th>
+          <th>BHYT</th>
+          <th>DVYT</th>
+          <th>Tái Khám</th>
+          <th>Nhập viện</th>
+          <th>Tỷ lệ</th>
+        </tr>
+      </thead>
+    <tbody>
 
-    <!-- Military patients -->
-    <div class="mil-table-wrap">
-      <div class="mil-table-head">
-        <span class="title">Báo Cáo</span>
-      
-      </div>
-        <div class="card">
-          <div class="svc-grid c-colums">
-            <div class="svc-item">
-              <span class="svc-label">Start</span>
-              <span class="svc-val">15/03/2026 5:30</span>
-              <span class="svc-day">Sunday</span>
-            </div>
+<tr>
+  <td class="left"><span class="ward-a">A1</span></td>
+  <td>25</td><td>0</td><td>8</td><td>12</td>
+  <td><strong>25</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>5</td><td>18</td><td>0</td><td>0</td>
+</tr>
 
-            <div class="svc-item">
-              <span class="svc-label">End</span>
-              <span class="svc-val">16/03/2026 5:29</span>
-              <span class="svc-day">Monday</span>
-            </div>
+<tr>
+  <td class="left"><span class="ward-a">A2</span></td>
+  <td>18</td><td>0</td><td>8</td><td>6</td>
+  <td><strong>18</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>4</td><td>6</td><td>0</td><td>0</td>
+</tr>
 
-            <div class="svc-item">
-              <span class="svc-label">Start A3</span>
-              <span class="svc-val">15/03/2026 3:00</span>
-              <span class="svc-day">Sunday</span>
-            </div>
+<tr>
+  <td class="left"><span class="ward-a">A3</span></td>
+  <td>1</td><td>0</td><td>1</td><td>0</td>
+  <td><strong>1</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>0</td><td>0</td><td>0</td><td>0</td>
+</tr>
 
-            <div class="svc-item">
-              <span class="svc-label">End A3</span>
-              <span class="svc-val">16/03/2026 2:59</span>
-              <span class="svc-day">Monday</span>
-            </div>
+<tr>
+  <td class="left"><span class="ward-a">A4</span></td>
+  <td>4</td><td>0</td><td>1</td><td>0</td>
+  <td><strong>4</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>3</td><td>2</td><td>0</td><td>0</td>
+</tr>
 
-            <div class="svc-item">
-              <span class="svc-label">Start Ngoài Giờ</span>
-              <span class="svc-val">15/03/2026 13:00</span>
-              <span class="svc-day">Sunday</span>
-            </div>
+<tr>
+  <td class="left"><span class="ward-a">A5</span></td>
+  <td>0</td><td>0</td><td>0</td><td>0</td>
+  <td><strong>0</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>0</td><td>0</td><td>0</td><td>0</td>
+</tr>
 
-            <div class="svc-item">
-              <span class="svc-label">End Ngoài Giờ</span>
-              <span class="svc-val">15/03/2026 16:30</span>
-              <span class="svc-day">Sunday</span>
-            </div>
+<tr>
+  <td class="left"><span class="ward-a">A6</span></td>
+  <td>21</td><td>0</td><td>4</td><td>6</td>
+  <td><strong>21</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>9</td><td>12</td><td>0</td><td>0</td>
+</tr>
 
-            <div class="svc-item">
-              <span class="svc-label">Start Khám Bệnh</span>
-              <span class="svc-val">15/03/2026 5:30</span>
-              <span class="svc-day">Sunday</span>
-            </div>
+<tr>
+  <td class="left"><span class="ward-a">A7</span></td>
+  <td>6</td><td>0</td><td>3</td><td>3</td>
+  <td><strong>6</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>2</td><td>1</td><td>0</td><td>16.7%</td>
+</tr>
 
-            <div class="svc-item">
-              <span class="svc-label">End Khám Bệnh</span>
-              <span class="svc-val">15/03/2026 11:00</span>
-              <span class="svc-day">Sunday</span>
-            </div>
-          </div>
-      </div>
-      
-    </div>
+<tr>
+  <td class="left"><span class="ward-b">B1</span></td>
+  <td>15</td><td>0</td><td>3</td><td>0</td>
+  <td><strong>15</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>12</td><td>9</td><td>0</td><td>0</td>
+</tr>
 
-    <!-- Right column -->
-    <div class="right-col">
+<tr>
+  <td class="left"><span class="ward-b">B2</span></td>
+  <td>8</td><td>0</td><td>3</td><td>1</td>
+  <td><strong>8</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>4</td><td>3</td><td>0</td><td>0</td>
+</tr>
 
-      <!-- Clinical services -->
-      <div class="card">
-        <div class="svc-grid">
-          <div class="svc-item">
-            <span class="svc-label">Máy chủ</span>
-            <span class="svc-val">172.251.110.5</span>
-          </div>
-          <div class="svc-item">
-            <span class="svc-label">Database</span>
-            <span class="svc-val" style="color:var(--teal);">CT1212019</span>
-          </div>
-          
-        </div>
-      </div>
-      <!-- Surgery breakdown -->
-        <div class="card">
-        
-        <div class="svc-grid">
-          <div class="svc-item">
-            <span class="svc-label">Trực Chỉ Huy</span>
-            <span class="svc-val">Đại tá Nguyễn Tấn Phong</span>
-          </div>
-          <div class="svc-item">
-            <span class="svc-label">Trực KHTH</span>
-            <span class="svc-val" style="color:var(--teal);">Trung tá CN Trần Kim Ngọc</span>
-          </div>  
-        </div>
-      </div>
+<tr>
+  <td class="left"><span class="ward-b">B3</span></td>
+  <td>8</td><td>0</td><td>3</td><td>1</td>
+  <td><strong>8</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>4</td><td>3</td><td>0</td><td>0</td>
+</tr>
 
-    
-      
+<tr>
+  <td class="left"><span class="ward-b">B5</span></td>
+  <td>9</td><td>0</td><td>2</td><td>0</td>
+  <td><strong>9</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>7</td><td>5</td><td>2</td><td>22.2%</td>
+</tr>
 
-      <!-- Assessment -->
-      <div class="assess-card">
-        <div class="assess-item">
-          <strong>Số lượng bản in:</strong> 6
-        </div>
-      </div>
+<tr>
+  <td class="left"><span class="ward-b">B6</span></td>
+  <td>10</td><td>0</td><td>1</td><td>4</td>
+  <td><strong>10</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>5</td><td>5</td><td>1</td><td>10.0%</td>
+</tr>
 
-    </div>
+<tr>
+  <td class="left"><span class="ward-b">B7</span></td>
+  <td>8</td><td>0</td><td>2</td><td>2</td>
+  <td><strong>8</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>4</td><td>4</td><td>0</td><td>0</td>
+</tr>
+
+<tr>
+  <td class="left"><span class="ward-b">B8</span></td>
+  <td>6</td><td>0</td><td>3</td><td>0</td>
+  <td><strong>6</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>3</td><td>3</td><td>0</td><td>0</td>
+</tr>
+
+<tr>
+  <td class="left"><span class="ward-b">B9</span></td>
+  <td>10</td><td>0</td><td>3</td><td>3</td>
+  <td><strong>10</strong></td>
+  <td><span class="badge-eq">= 0</span></td>
+  <td>4</td><td>6</td><td>0</td><td>0</td>
+</tr>
+
+</tbody>
+      <tfoot>
+        <tr>
+          <td class="left">Tổng</td><td>689</td><td>125</td><td>158</td><td><strong>656</strong></td>
+          <td></td><td>501</td><td>56</td><td>51</td><td>0</td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 
-  <!-- ===== KPI ROW ===== -->
-  
-  <div class="btn-layout " style="padding-top: 10px;">
-
-  <!-- CỘT TRÁI -->
-  <div class="left">
-    <button class="btn-item">Lấy báo cáo khám bệnh</button>
-    <button class="btn-item">Lấy báo cáo giao ban 05h30</button>
-    <button class="btn-item">Lấy số liệu trong ngày</button>
-    <button class="btn-item">Lấy cả tuần hiện tại</button>
-    <button class="btn-item">Lấy báo cáo theo ngày tùy chỉnh</button>
-    <button class="btn-item">Xuất file PDF</button>
-    <button class="btn-item">In báo cáo</button>
-    <button class="btn-item">Xuất file PDF khám bệnh</button>
+  <!-- ===== WARD TABLE ===== -->
+  <div class="sec mt">BÁO CÁO KHÁM GIỜ HÀNH CHÍNH</div>
+  <div>Từ 05:30 ngày 15/03/2026 đến 11:00 ngày 15/03/2026</div>
+  <div class="table-wrap">
+    <table class="ward-table">
+      <thead>
+        <tr>
+          <th class="left" style="width:56px;">TT</th>
+          <th>Số PK</th>
+          <th>Chuyên ngành</th>
+          <th>Khoa</th>
+          <th>Bác Sĩ</th>
+          <th>Tổng</th>
+          <th style="color:var(--blue);">QN</th>
+          <th>BHA</th>
+          <th>BHYT</th>
+          <th>DVYT</th>
+          <th>Tái Khám</th>
+          <th>Nhập viện</th>
+          <th>Tỷ lệ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="left"><span class="ward-a">A1</span></td><td>63</td><td>15</td><td>11</td><td><strong>60</strong></td><td><span class="badge-dn">▼ 3</span></td><td>39</td><td>5</td><td>4</td><td>—</td></tr>
+     
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="left">Tổng</td><td>689</td><td>125</td><td>158</td><td><strong>656</strong></td>
+          <td></td><td>501</td><td>56</td><td>51</td><td>0</td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
-
-  <!-- CỘT PHẢI -->
-  <div class="right">
-    <button class="btn-item">Chọn máy 110.5</button>
-    <button class="btn-item">Chọn máy 110.4</button>
-  </div>
-
 </div>
-
-
-</div>
-
-
 
 
 <script>
