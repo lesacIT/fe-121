@@ -383,7 +383,7 @@ tfoot td:first-child {
   page-break-inside: avoid;
 }
 .sign-box  { font-size: 7.5pt; }
-.sign-title { font-weight: 700; text-transform: uppercase; font-size: 7pt; letter-spacing: 0.04em; }
+.sign-title { font-weight: 700; text-transform: uppercase; font-size: 10pt; letter-spacing: 0.04em; }
 .sign-role  { color: var(--gray2); font-size: 6.5pt; margin-top: 1mm; }
 .sign-line  { border-bottom: 1px solid var(--gray1); margin: 10mm 5mm 1mm; }
 .sign-name  { font-size: 7pt; color: var(--gray2); }
@@ -511,6 +511,9 @@ tr.alert-tv td { background: #fff0f0 !important; }
 td, th {
   white-space: nowrap;
 }
+.sign-row {
+  margin-top: 12mm;
+}
 </style>
 </head>
 <body>
@@ -545,7 +548,7 @@ td, th {
       <div class="hosp-sub">BỆNH VIỆN QUÂN Y 121</div>
     </div>
     <div class="report-title">
-      <h2>BÁO CÁO KHÁM NGOÀI GIỜ</h2>
+      <h2>BÁO TRỰC KẾ HOẠCH TỔNG HỢP</h2>
       <p id="p1-time">Từ ngày: ... — Đến ngày: ...</p>
     </div>
     <div class="report-meta">
@@ -852,7 +855,157 @@ td, th {
     <tbody id="tb-khoa2"></tbody>
   </table>
 </div>
+<div class="section">
+  <div class="section-title">IV. PHẪU THUẬT</div>
 
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Khoa</th>
+        <th rowspan="2">Tổng</th>
+
+        <th colspan="5">Phẫu thuật chương trình</th>
+        <th colspan="5">Phẫu thuật theo yêu cầu</th>
+
+        <th rowspan="2">TT ĐB</th>
+        <th rowspan="2">Ghi chú</th>
+      </tr>
+
+      <tr>
+        <!-- CT -->
+        <th>+</th>
+        <th>Loại ĐB</th>
+        <th>Loại I</th>
+        <th>Loại II</th>
+        <th>Loại III</th>
+
+        <!-- YC -->
+        <th>+</th>
+        <th>Loại ĐB</th>
+        <th>Loại I</th>
+        <th>Loại II</th>
+        <th>Loại III</th>
+      </tr>
+    </thead>
+
+    <tbody id="tb-phauthuat"></tbody>
+  </table>
+</div>
+<div class="section">
+  <div class="section-title">V. VẬT LÝ TRỊ LIỆU</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Loại dịch vụ</th>
+        <th>TS</th>
+        <th>BHQN</th>
+        <th>BHA</th>
+        <th>BH Khác</th>
+        <th>Dịch vụ</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+
+    <tbody id="tb-vltl"></tbody>
+  </table>
+</div>
+<div class="section">
+  <div class="section-title">VI. THẬN NHÂN TẠO</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="4">Tổng số lần lọc</th>
+        <th colspan="4">Số ca lọc thường</th>
+        <th colspan="4">Số ca lọc HDF</th>
+        <th colspan="4">Số ca lọc cấp cứu</th>
+        <th rowspan="2">Ghi chú</th>
+      </tr>
+
+      <tr>
+        <!-- Tổng -->
+        <th>Tổng</th>
+        <th>QN</th>
+        <th>BHYT</th>
+        <th>DV</th>
+
+        <!-- Lọc thường -->
+        <th>+</th>
+        <th>QN</th>
+        <th>BHYT</th>
+        <th>DV</th>
+
+        <!-- HDF -->
+        <th>+</th>
+        <th>QN</th>
+        <th>BHYT</th>
+        <th>DV</th>
+
+        <!-- Cấp cứu -->
+        <th>+</th>
+        <th>QN</th>
+        <th>BH</th>
+        <th>DV</th>
+      </tr>
+    </thead>
+
+    <tbody id="tb-than"></tbody>
+  </table>
+</div>
+<div class="section">
+  <div class="section-title">VI. QUÂN NHÂN</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nội dung</th>
+        <th>Số lượng</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="left"><strong>Quân nhân nhập viện</strong></td>
+        <td>13</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="left"><strong>Quân nhân chuyển viện</strong></td>
+        <td>0</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="section">
+  <div class="section-title">VIII. NHẬN XÉT</div>
+
+  <table>
+    <tbody>
+      <tr>
+        <td class="left">
+          <strong>1. Công tác chuyên môn:</strong><br>
+          Các khoa đảm bảo công tác khám, cấp cứu, thu dung và điều trị.
+        </td>
+      </tr>
+
+      <tr>
+        <td class="left">
+          <strong>2. Tình hình trực:</strong><br>
+          Kiểm tra các kíp trực đảm bảo./.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="sign-row" style="display:flex; justify-content:flex-end;">
+  <div class="sign-box">
+    <div class="sign-title">TRỰC KẾ HOẠCH TỔNG HỢP</div>
+    <div class="sign-line" style="margin-top: 4rem;"></div>
+    <div class="sign-name">Trung tá CN Trần Kim Ngọc</div>
+  </div>
+</div>
 </div><!-- /section 4 -->
 
 </div><!-- /document -->
@@ -862,309 +1015,48 @@ td, th {
      JAVASCRIPT XỬ LÝ DỮ LIỆU
      ============================================================ -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
 
-  /* ================= HELPER ================= */
-  function renderTable(id, data, template) {
-    const tb = document.getElementById(id);
-    if (!tb) {
-      console.warn("Không tìm thấy:", id);
-      return;
-    }
-
-    tb.innerHTML = ""; // clear cũ
-
-    data.forEach(item => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = template(item);
-      tb.appendChild(tr);
-    });
+// ================= GLOBAL DATA =================
+const dataKhoa = [
+  {
+    khoa: "A1", cu: 58,
+    hc: [3,14,44,""], vao: [1,8,2,3], ra: [3,"",4,""],
+    tv: "", cv: ["",""], ck: ["",""], dt: ["",2]
+  },
+  {
+    khoa: "A2", cu: 49,
+    hc: [3,10,41,""], vao: [3,16,"",4], ra: [11,1,8,2],
+    tv: 3, cv: [1,""], ck: [1,""], dt: ["",2]
+  },
+  {
+    khoa: "Tổng", cu: 652,
+    hc: [54,85,539,""], vao: [33,128,13,13], ra: [92,10,69,9],
+    tv: 6, cv: [45,9], ck: [0,0], dt: [1,6]
   }
+];
 
-  /* ================= SUMMARY ================= */
-  const dataSummary = [
-    { name: "Khám bệnh", tong: 219, bhyt: 91, qn: 1, bha: 32, khac: 58, khongBhyt: 91, note: "Khám VIP: 38" },
-    { name: "Vào viện", tong: 128, bhyt: 118, qn: 13, bha: 13, khac: 92, khongBhyt: 10, note: "Số ca: 188" },
-    { name: "Ra viện", tong: 69, bhyt: 60, qn: 9, bha: 6, khac: 45, khongBhyt: 9, note: "Khám SK: 0" }
-  ];
+// ================= HELPER =================
+function renderTable(id, data, template) {
+  const tb = document.getElementById(id);
+  if (!tb) return;
 
-  renderTable("tb-summary", dataSummary, item => `
-    <td class="left"><strong>${item.name}</strong></td>
-    <td>${item.tong}</td>
-    <td class="pill-bh">${item.bhyt}</td>
-    <td class="pill-qn">${item.qn}</td>
-    <td class="pill-bha">${item.bha}</td>
-    <td>${item.khac}</td>
-    <td>${item.khongBhyt}</td>
-    <td class="left">${item.note}</td>
-  `);
-
-  /* ================= CHI TIẾT ================= */
-  const tbCT = document.getElementById("tb-ct");
-
-  function addGroup(tb, title, values) {
-    if (!tb) return;
-
+  tb.innerHTML = "";
+  data.forEach(item => {
     const tr = document.createElement("tr");
-    tr.className = "group-hdr";
-
-    tr.innerHTML = `
-      <td colspan="6">${title}</td>
-      <td>${values.tong}</td>
-      <td>${values.qn}</td>
-      <td>${values.bha}</td>
-      <td>${values.bhyt}</td>
-      <td>${values.dvyt}</td>
-      <td>${values.tai}</td>
-      <td>${values.nv}</td>
-      <td>${values.tl}</td>
-    `;
-
+    tr.innerHTML = template(item);
     tb.appendChild(tr);
-  }
-
-  if (tbCT) {
-    addGroup(tbCT, "A. Phòng khám", {
-      tong: 167, qn: 0, bha: 32, bhyt: 50, dvyt: 85, tai: 86, nv: 4, tl: "2,4%"
-    });
-
-    const dataCT = [
-      {
-        pk: 2,
-        ten: "Phòng Nội Tim Mạch 2",
-        khoa: "A1",
-        bs: "BS Thạch Đạt Thịnh (24)<br>BS Lê Thị Ánh Dương (1)",
-        tong: 25, bha: 8, bhyt: 12, dvyt: 5, tai: 18
-      },
-      {
-        pk: 4,
-        ten: "Phòng Nội Tiêu Hóa",
-        khoa: "A2",
-        bs: "BS CKII Lê Thị Ánh Như (18)",
-        tong: 18, bha: 8, bhyt: 6, dvyt: 4, tai: 6
-      }
-    ];
-
-    let stt = 1;
-
-    dataCT.forEach(item => {
-      const tr = document.createElement("tr");
-
-      tr.innerHTML = `
-        <td>${stt++}</td>
-        <td>${item.pk || ""}</td>
-        <td class="left">${item.ten || ""}</td>
-        <td></td>
-        <td>${item.khoa || ""}</td>
-        <td class="left">${item.bs || ""}</td>
-        <td>${item.tong || ""}</td>
-        <td>${item.qn || ""}</td>
-        <td>${item.bha || ""}</td>
-        <td>${item.bhyt || ""}</td>
-        <td>${item.dvyt || ""}</td>
-        <td>${item.tai || ""}</td>
-        <td>${item.nv || ""}</td>
-        <td>${item.tl || ""}</td>
-      `;
-
-      tbCT.appendChild(tr);
-    });
-  }
-
-  /* ================= CĐHA ================= */
-  const dataCDHA = [
-    { type: "BHYT", sieuAm: 112, noiSoi: 99, xq: 285, ct: 32, mri: 2, total: 538 },
-    { type: "DVYT", sieuAm: 292, noiSoi: 105, xq: 200, ct: 44, mri: 26, total: 733 },
-    { type: "QN/CS", sieuAm: 45, noiSoi: 39, xq: 32, ct: 2, mri: 2, total: 131 },
-    { type: "Tổng", sieuAm: 449, noiSoi: 243, xq: 517, ct: 78, mri: 30, total: 1402 }
-  ];
-
-  renderTable("tb-cdha", dataCDHA, item => `
-    <td class="left"><strong>${item.type}</strong></td>
-    <td>${item.sieuAm}</td>
-    <td>${item.noiSoi}</td>
-    <td>${item.xq}</td>
-    <td>${item.ct}</td>
-    <td>${item.mri}</td>
-    <td><strong>${item.total}</strong></td>
-  `);
-
-  /* ================= XÉT NGHIỆM ================= */
-  const dataXN = [
-    {
-      type: "Xét nghiệm",
-      benhNhan: { tong: 1168, bhyt: 855, dvyt: 226, qn: 87 },
-      chiDinh: { tong: 10383, bhyt: 8062, dvyt: 1844, qn: 477 }
-    }
-  ];
-
-  renderTable("tb-xn", dataXN, item => `
-    <td class="left"><strong>${item.type}</strong></td>
-    <td>${item.benhNhan.tong}</td>
-    <td>${item.benhNhan.bhyt}</td>
-    <td>${item.benhNhan.dvyt}</td>
-    <td>${item.benhNhan.qn}</td>
-    <td>${item.chiDinh.tong}</td>
-    <td>${item.chiDinh.bhyt}</td>
-    <td>${item.chiDinh.dvyt}</td>
-    <td>${item.chiDinh.qn}</td>
-    <td></td>
-  `);
-
-  /* ================= DƯỢC ================= */
-  const dataDuocFinal = [
-    { type: "DVYT", toa: 465, daCap: 465 },
-    { type: "BHYT", toa: 340, daCap: 340 },
-    { type: "QN/CS", toa: 124, daCap: 124 },
-    { type: "Tổng", toa: 929, daCap: 929, matToa: 0, tyLe: 0, chinhToa: 0, tren7: 0, tren100k: 0 }
-  ];
-
-  renderTable("tb-duoc", dataDuocFinal, item => `
-    <td class="left"><strong>${item.type}</strong></td>
-    <td>${item.toa || ""}</td>
-    <td>${item.daCap || ""}</td>
-    <td></td>
-    <td>${item.matToa || ""}</td>
-    <td>${item.tyLe || ""}</td>
-    <td>${item.chinhToa || ""}</td>
-    <td>${item.tren7 || ""}</td>
-    <td>${item.tren100k || ""}</td>
-  `);
-
-});
-const tbKhoa = document.getElementById("tb-khoa");
-
-
-if (tbKhoa) {
-  dataKhoa.forEach(row => {
-    const tr = document.createElement("tr");
-
-    tr.innerHTML = `
-      <td class="left"><strong>${row.khoa}</strong></td>
-      <td>${row.cu}</td>
-
-      ${row.hc.map(v => `<td>${v || ""}</td>`).join("")}
-      ${row.vao.map(v => `<td>${v || ""}</td>`).join("")}
-      ${row.ra.map(v => `<td>${v || ""}</td>`).join("")}
-
-      <td>${row.tv || ""}</td>
-
-      <td>${row.cv[0] || ""}</td>
-      <td>${row.cv[1] || ""}</td>
-
-      <td>${row.ck[0] || ""}</td>
-      <td>${row.ck[1] || ""}</td>
-
-      <td>${row.dt[0] || ""}</td>
-      <td>${row.dt[1] || ""}</td>
-    `;
-
-    tbKhoa.appendChild(tr);
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-
-  const dataKhoa = [
-    {
-      khoa: "A1", cu: 58,
-      hc: [3,14,44,""], vao: [1,8,2,3], ra: [3,"",4,""],
-      tv: "", cv: ["",""], ck: ["",""], dt: ["",2]
-    },
-    {
-      khoa: "A2", cu: 49,
-      hc: [3,10,41,""], vao: [3,16,"",4], ra: [11,1,8,2],
-      tv: 3, cv: [1,""], ck: [1,""], dt: ["",2]
-    },
-    {
-      khoa: "A4", cu: 36,
-      hc: [14,4,24,""], vao: [1,12,6,""], ra: [5,1,5,2],
-      tv: "", cv: ["",""], ck: ["",""], dt: ["",""]
-    },
-    {
-      khoa: "B1", cu: 131,
-      hc: [8,8,111,""], vao: [7,14,1,1], ra: [10,2,11,1],
-      tv: 1, cv: [8,1], ck: ["",""], dt: ["",""]
-    },
-    {
-      khoa: "B6", cu: 97,
-      hc: ["",9,87,""], vao: [3,15,"",""], ra: [14,1,13,""],
-      tv: "", cv: [11,2], ck: ["",""], dt: ["",""]
-    },
-    {
-      khoa: "Tổng", cu: 652,
-      hc: [54,85,539,""], vao: [33,128,13,13], ra: [92,10,69,9],
-      tv: 6, cv: [45,9], ck: [0,0], dt: [1,6]
-    }
-  ];
-
-
-  const tbKhoaTable = document.getElementById("tb-khoa2");
-
-  if (!tbKhoaTable) {
-    console.warn("Không tìm thấy #tb-khoa");
-    return;
-  }
-
-  dataKhoa.forEach(row => {
-    const tr = document.createElement("tr");
-
-    tr.innerHTML = `
-      <td class="left"><strong>${row.khoa}</strong></td>
-      <td>${row.cu}</td>
-
-      ${row.hc.map(v => `<td>${v || ""}</td>`).join("")}
-      ${row.vao.map(v => `<td>${v || ""}</td>`).join("")}
-      ${row.ra.map(v => `<td>${v || ""}</td>`).join("")}
-
-      <td>${row.tv || ""}</td>
-
-      <td>${row.cv[0] || ""}</td>
-      <td>${row.cv[1] || ""}</td>
-
-      <td>${row.ck[0] || ""}</td>
-      <td>${row.ck[1] || ""}</td>
-
-      <td>${row.dt[0] || ""}</td>
-      <td>${row.dt[1] || ""}</td>
-    `;
-
-    tbKhoaTable.appendChild(tr);
-  });
-
-});
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* ===== 1. DATA ===== */
-  const dataKhoa = [
-    { khoa: "A1", cu: 58, hc: [3,14,44,""], vao: [1,8,2,3], ra: [3,"",4,""], tv: "" }
-  ];
-
-  /* ===== 2. DOM ===== */
-  const tbKhoa = document.getElementById("tb-khoa");
-
-  if (!tbKhoa) {
+// ================= RENDER KHOA =================
+function renderKhoa2() {
+  const tb = document.getElementById("tb-khoa2");
+  if (!tb) {
     console.warn("Không tìm thấy bảng khoa");
     return;
   }
 
-  /* ===== 3. RENDER ===== */
-  dataKhoa.forEach(row => {
-    const tr = document.createElement("tr");
-
-    tr.innerHTML = `
-      <td>${row.khoa}</td>
-      <td>${row.cu}</td>
-    `;
-
-    tbKhoa.appendChild(tr);
-  });
-
-});
-
-function renderKhoa2() {
-  const tb = document.getElementById("tb-khoa2");
-  if (!tb) return;
+  tb.innerHTML = "";
 
   dataKhoa.forEach(row => {
     const tr = document.createElement("tr");
@@ -1197,7 +1089,197 @@ function renderKhoa2() {
     tb.appendChild(tr);
   });
 }
-renderKhoa2();
+
+// ================= INIT =================
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* ===== SUMMARY ===== */
+  const dataSummary = [
+    { name: "Khám bệnh", tong: 219, bhyt: 91, qn: 1, bha: 32, khac: 58, khongBhyt: 91, note: "Khám VIP: 38" }
+  ];
+
+  renderTable("tb-summary", dataSummary, item => `
+    <td class="left"><strong>${item.name}</strong></td>
+    <td>${item.tong}</td>
+    <td>${item.bhyt}</td>
+    <td>${item.qn}</td>
+    <td>${item.bha}</td>
+    <td>${item.khac}</td>
+    <td>${item.khongBhyt}</td>
+    <td>${item.note}</td>
+  `);
+
+  /* ===== CĐHA ===== */
+  const dataCDHA = [
+    { type: "BHYT", sieuAm: 112, noiSoi: 99, xq: 285, ct: 32, mri: 2, total: 538 }
+  ];
+
+  renderTable("tb-cdha", dataCDHA, item => `
+    <td>${item.type}</td>
+    <td>${item.sieuAm}</td>
+    <td>${item.noiSoi}</td>
+    <td>${item.xq}</td>
+    <td>${item.ct}</td>
+    <td>${item.mri}</td>
+    <td>${item.total}</td>
+  `);
+
+  /* ===== XÉT NGHIỆM ===== */
+  const dataXN = [
+    {
+      type: "XN",
+      benhNhan: { tong: 1168, bhyt: 855, dvyt: 226, qn: 87 },
+      chiDinh: { tong: 10383, bhyt: 8062, dvyt: 1844, qn: 477 }
+    }
+  ];
+
+  renderTable("tb-xn", dataXN, item => `
+    <td>${item.type}</td>
+    <td>${item.benhNhan.tong}</td>
+    <td>${item.benhNhan.bhyt}</td>
+    <td>${item.benhNhan.dvyt}</td>
+    <td>${item.benhNhan.qn}</td>
+    <td>${item.chiDinh.tong}</td>
+    <td>${item.chiDinh.bhyt}</td>
+    <td>${item.chiDinh.dvyt}</td>
+    <td>${item.chiDinh.qn}</td>
+    <td></td>
+  `);
+
+  /* ===== GỌI KHOA ===== */
+  renderKhoa2();
+
+});
+const dataPhauThuat = [
+  { khoa: "B1", tong: 2, ct: [2,"","","2",""], yc: ["","","","",""], ttdb: "" },
+  { khoa: "B2", tong: 0, ct: ["","","","",""], yc: ["","","","",""], ttdb: "" },
+  { khoa: "B3", tong: 0, ct: ["","","","",""], yc: ["","","","",""], ttdb: "" },
+  { khoa: "B5", tong: 3, ct: [3,"","3","",""], yc: ["","","","",""], ttdb: "" },
+  { khoa: "B6", tong: 4, ct: [3,"3","","",""], yc: ["1","1","","",""], ttdb: "" },
+  { khoa: "B7", tong: 11, ct: [11,"","","11",""], yc: ["","","","",""], ttdb: "" },
+  { khoa: "B8", tong: 0, ct: ["","","","",""], yc: ["","","","",""], ttdb: "" },
+  { khoa: "B8 (C1)", tong: 5, ct: [5,"","","","5"], yc: ["","","","",""], ttdb: "" },
+  { khoa: "B9", tong: 0, ct: ["","","","",""], yc: ["","","","",""], ttdb: "" },
+
+  {
+    khoa: "Tổng",
+    tong: 25,
+    ct: [24,"3","","3","13"],
+    yc: ["1","1","","",""],
+    ttdb: "",
+    isTotal: true
+  }
+];
+
+function renderPhauThuat() {
+  const tb = document.getElementById("tb-phauthuat");
+  if (!tb) return;
+
+  tb.innerHTML = "";
+
+  dataPhauThuat.forEach(row => {
+    const tr = document.createElement("tr");
+
+    if (row.isTotal) {
+      tr.style.fontWeight = "bold";
+      tr.style.background = "#e0f2fe";
+    }
+
+    tr.innerHTML = `
+      <td class="left">${row.khoa}</td>
+      <td>${row.tong}</td>
+
+      ${row.ct.map(v => `<td>${v || ""}</td>`).join("")}
+      ${row.yc.map(v => `<td>${v || ""}</td>`).join("")}
+
+      <td>${row.ttdb || ""}</td>
+      <td></td>
+    `;
+
+    tb.appendChild(tr);
+  });
+}
+renderPhauThuat();
+const dataVLT = [
+  { loai: "Châm cứu", ts: 42, bhqn: 9, bha: 11, bhkhac: 11, dv: 11 },
+  { loai: "Bấm huyệt", ts: 9, bhqn: 1, bha: 3, bhkhac: 5, dv: 0 },
+  { loai: "Nắn cột sống", ts: 27, bhqn: 5, bha: 6, bhkhac: 5, dv: 11 },
+  { loai: "Khác", ts: 81, bhqn: 14, bha: 23, bhkhac: 31, dv: 13 },
+  { loai: "Tổng", ts: 159, bhqn: 29, bha: 43, bhkhac: 52, dv: 35, isTotal: true }
+];
+
+function renderVLT() {
+  const tb = document.getElementById("tb-vltl");
+  if (!tb) return;
+
+  tb.innerHTML = "";
+
+  dataVLT.forEach(row => {
+    const tr = document.createElement("tr");
+
+    if (row.isTotal) {
+      tr.style.fontWeight = "bold";
+      tr.style.background = "#e0f2fe";
+    }
+
+    tr.innerHTML = `
+      <td class="left">${row.loai}</td>
+      <td>${row.ts}</td>
+      <td>${row.bhqn}</td>
+      <td>${row.bha}</td>
+      <td>${row.bhkhac}</td>
+      <td>${row.dv}</td>
+      <td></td>
+    `;
+
+    tb.appendChild(tr);
+  });
+}
+renderVLT();
+const dataThan = [
+  {
+    tong: 133, qn: 0, bhyt: 133, dv: 0,
+
+    thuong: [0, 0, 0, 0],   // +, QN, BHYT, DV
+    hdf:    [0, 0, 0, 0],
+    capcuu: [0, 0, 0, 0],
+
+    note: "",
+    isTotal: true
+  }
+];
+
+function renderThan() {
+  const tb = document.getElementById("tb-than");
+  if (!tb) return;
+
+  tb.innerHTML = "";
+
+  dataThan.forEach(row => {
+    const tr = document.createElement("tr");
+
+    if (row.isTotal) {
+      tr.style.fontWeight = "bold";
+      tr.style.background = "#e0f2fe";
+    }
+
+    tr.innerHTML = `
+      <td>${row.tong}</td>
+      <td>${row.qn}</td>
+      <td>${row.bhyt}</td>
+      <td>${row.dv}</td>
+
+      ${row.thuong.map(v => `<td>${v}</td>`).join("")}
+      ${row.hdf.map(v => `<td>${v}</td>`).join("")}
+      ${row.capcuu.map(v => `<td>${v}</td>`).join("")}
+
+      <td>${row.note}</td>
+    `;
+
+    tb.appendChild(tr);
+  });
+}
+renderThan();
 </script>
 </body>
 </html>
