@@ -1,712 +1,561 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DANH SÁCH QUÂN NHÂN VÀO VIỆN</title>
-   
-    <style>
-        * {
-    margin: 0;
-    padding: 0;
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    box-sizing: border-box;
-    font-family: sans-serif;
-        }
-        @media print {
-        .table, .table__body {
-        overflow: visible;
-        height: auto !important;
-        width: auto !important;
-        }
-        }
-        .table__body {
-            overflow-x: auto;
-            overflow-y: auto;
-        }
-        /*@page {
-            size: landscape;
-            margin: 0; 
-        }*/
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        th {
-            white-space: nowrap;
-        }
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
-        main.table {
-            width: 82vw;
-            height: 90vh;
-            background-color: #fff5;
+a {
+	text-decoration: none;
+}
 
-            backdrop-filter: blur(7px);
-            box-shadow: 0 .4rem .8rem #0005;
-            border-radius: .8rem;
+li {
+	list-style: none;
+}
 
-            overflow: hidden;
-        }
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
 
-        .table__header {
-            width: 100%;
-            height: 10%;
-            background-color: #fff4;
-            padding: .8rem 1rem;
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: #342E37;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+}
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+html {
+	overflow-x: hidden;
+}
 
-        .table__header .input-group {
-            width: 35%;
-            height: 100%;
-            background-color: #fff5;
-            padding: 0 .8rem;
-            border-radius: 2rem;
+body.dark {
+	--light: #0C0C1E;
+	--grey: #060714;
+	--dark: #FBFBFB;
+}
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+body {
+	background: var(--grey);
+	overflow-x: hidden;
+}
 
-            transition: .2s;
-        }
+/* MAIN */
 
-        .table__header .input-group:hover {
-            width: 45%;
-            background-color: #fff8;
-            box-shadow: 0 .1rem .4rem #0002;
-        }
-
-        .table__header .input-group img {
-            width: 1.2rem;
-            height: 1.2rem;
-        }
-
-        .table__header .input-group input {
-            width: 100%;
-            padding: 0 .5rem 0 .3rem;
-            background-color: transparent;
-            border: none;
-            outline: none;
-        }
-
-        .table__body {
-            width: 95%;
-            max-height: calc(89% - 1.6rem);
-            background-color: #fffb;
-
-            margin: .8rem auto;
-            border-radius: .6rem;
-
-            overflow: auto;
-            overflow: overlay;
-        }
-
-
-        .table__body::-webkit-scrollbar{
-            width: 0.5rem;
-            height: 0.5rem;
-        }
-
-        .table__body::-webkit-scrollbar-thumb{
-            border-radius: .5rem;
-            background-color: #0004;
-            visibility: hidden;
-        }
-
-        .table__body:hover::-webkit-scrollbar-thumb{ 
-            visibility: visible;
-        }
+.list-container {
+    max-height: 350px; 
+    overflow-y: auto;
+}
+#content main {
+	width: 100%;
+	padding: 36px 24px;
+	font-family: var(--poppins);
+	max-height: calc(100vh - 56px);
+	overflow-y: auto;
+}
+#content main .head-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	grid-gap: 16px;
+	flex-wrap: wrap;
+}
+#content main .head-title .left h1 {
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	color: var(--dark);
+}
+#content main .head-title .left .breadcrumb {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+}
+#content main .head-title .left .breadcrumb li {
+	color: var(--dark);
+}
+#content main .head-title .left .breadcrumb li a {
+	color: var(--dark-grey);
+	pointer-events: none;
+}
+#content main .head-title .left .breadcrumb li a.active {
+	color: var(--blue);
+	pointer-events: unset;
+}
+#content main .head-title .btn-download {
+	height: 36px;
+	padding: 0 16px;
+	border-radius: 36px;
+	background: var(--blue);
+	color: var(--light);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: 10px;
+	font-weight: 500;
+}
 
 
-        table {
-            width: 100%;
-        }
-
-        td img {
-            width: 36px;
-            height: 36px;
-            margin-right: .5rem;
-            border-radius: 50%;
-
-            vertical-align: middle;
-        }
-
-        table, th, td {
-            border-collapse: collapse;
-            padding: 1rem;
-            text-align: left;
-        }
-
-        thead th {
-            position: sticky;
-            top: 0;
-            left: 0;
-            background-color: #d5d1defe;
-            cursor: pointer;
-            text-transform: capitalize;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #0000000b;
-        }
-
-        tbody tr {
-            --delay: .1s;
-            transition: .5s ease-in-out var(--delay), background-color 0s;
-        }
-
-        tbody tr.hide {
-            opacity: 0;
-            transform: translateX(100%);
-        }
-
-        tbody tr:hover {
-            background-color: #fff6 !important;
-        }
-
-        tbody tr td,
-        tbody tr td p,
-        tbody tr td img {
-            transition: .2s ease-in-out;
-        }
-
-        tbody tr.hide td,
-        tbody tr.hide td p {
-            padding: 0;
-            font: 0 / 0 sans-serif;
-            transition: .2s ease-in-out .5s;
-        }
-
-        tbody tr.hide td img {
-            width: 0;
-            height: 0;
-            transition: .2s ease-in-out .5s;
-        }
-
-        .status {
-            padding: .4rem 0;
-            border-radius: 2rem;
-            text-align: center;
-        }
-
-        .status.delivered {
-            background-color: #86e49d;
-            color: #006b21;
-        }
-
-        .status.cancelled {
-            background-color: #d893a3;
-            color: #b30021;
-        }
-
-        .status.pending {
-            background-color: #ebc474;
-        }
-
-        .status.shipped {
-            background-color: #6fcaea;
-        }
 
 
-        @media (max-width: 1000px) {
-            td:not(:first-of-type) {
-                min-width: 12.1rem;
-            }
-        }
+#content main .box-info {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-gap: 24px;
+	margin-top: 36px;
+}
+#content main .box-info li {
+	padding: 24px;
+	background: var(--light);
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	grid-gap: 24px;
+}
+#content main .box-info li .bx {
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	font-size: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#content main .box-info li:nth-child(1) .bx {
+	background: var(--light-blue);
+	color: var(--blue);
+}
+#content main .box-info li:nth-child(2) .bx {
+	background: var(--light-yellow);
+	color: var(--yellow);
+}
+#content main .box-info li:nth-child(3) .bx {
+	background: var(--light-orange);
+	color: var(--orange);
+}
+#content main .box-info li .text h3 {
+	font-size: 24px;
+	font-weight: 600;
+	color: var(--dark);
+}
+#content main .box-info li .text p {
+	color: var(--dark);	
+}
 
-        thead th span.icon-arrow {
-            display: inline-block;
-            width: 1.3rem;
-            height: 1.3rem;
-            border-radius: 50%;
-            border: 1.4px solid transparent;
-            
-            text-align: center;
-            font-size: 1rem;
-            
-            margin-left: .5rem;
-            transition: .2s ease-in-out;
-        }
 
-        thead th:hover span.icon-arrow{
-            border: 1.4px solid #6c00bd;
-        }
 
-        thead th:hover {
-            color: #6c00bd;
-        }
 
-        thead th.active span.icon-arrow{
-            background-color: #6c00bd;
-            color: #fff;
-        }
 
-        thead th.asc span.icon-arrow{
-            transform: rotate(180deg);
-        }
+#content main .table-data {
+	display: flex;
+	flex-wrap: wrap;
+	grid-gap: 24px;
+	margin-top: 24px;
+	width: 100%;
+	color: var(--dark);
+}
+#content main .table-data > div {
+	border-radius: 20px;
+	background: var(--light);
+	padding: 24px;
+	overflow-x: auto;
+}
+#content main .table-data .head {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+	margin-bottom: 24px;
+}
+#content main .table-data .head h3 {
+	margin-right: auto;
+	font-size: 24px;
+	font-weight: 600;
+}
+#content main .table-data .head .bx {
+	cursor: pointer;
+}
 
-        thead th.active,tbody td.active {
-            color: #6c00bd;
-        }
+#content main .table-data .order {
+	flex-grow: 1;
+	flex-basis: 500px;
+}
+#content main .table-data .order table {
+	width: 100%;
+	border-collapse: collapse;
+}
+#content main .table-data .order table th {
+	padding-bottom: 12px;
+	font-size: 13px;
+	text-align: left;
+	border-bottom: 1px solid var(--grey);
+}
+#content main .table-data .order table td {
+	padding: 16px 0;
+}
+#content main .table-data .order table tr td:first-child {
+	display: flex;
+	align-items: center;
+	grid-gap: 12px;
+	padding-left: 6px;
+}
+#content main .table-data .order table td img {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+#content main .table-data .order table tbody tr:hover {
+	background: var(--grey);
+}
+#content main .table-data .order table tr td .status {
+	font-size: 10px;
+	padding: 6px 16px;
+	color: var(--light);
+	border-radius: 20px;
+	font-weight: 700;
+}
+#content main .table-data .order table tr td .status.completed {
+	background: var(--blue);
+}
+#content main .table-data .order table tr td .status.process {
+	background: var(--yellow);
+}
+#content main .table-data .order table tr td .status.pending {
+	background: var(--orange);
+}
 
-        .export__file {
-            position: relative;
-        }
 
-        .export__file .export__file-btn {
-            display: inline-block;
-            width: 2rem;
-            height: 2rem;
-            background: #fff6 url(images/export.png) center / 80% no-repeat;
-            border-radius: 50%;
-            transition: .2s ease-in-out;
-        }
+#content main .table-data .todo {
+	flex-grow: 1;
+	flex-basis: 300px;
+}
+#content main .table-data .todo .todo-list {
+	width: 100%;
+}
+#content main .table-data .todo .todo-list li {
+	width: 100%;
+	margin-bottom: 16px;
+	background: var(--grey);
+	border-radius: 10px;
+	padding: 14px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#content main .table-data .todo .todo-list li .bx {
+	cursor: pointer;
+}
+#content main .table-data .todo .todo-list li.completed {
+	border-left: 10px solid var(--blue);
+}
+#content main .table-data .todo .todo-list li.not-completed {
+	border-left: 10px solid var(--orange);
+}
+#content main .table-data .todo .todo-list li:last-child {
+	margin-bottom: 0;
+}
+/* MAIN */
+/* CONTENT */
+@media screen and (max-width: 768px) {
+	#sidebar {
+		width: 200px;
+	}
 
-        .export__file .export__file-btn:hover { 
-            background-color: #fff;
-            transform: scale(1.15);
-            cursor: pointer;
-        }
+	#content {
+		width: calc(100% - 60px);
+		left: 200px;
+	}
 
-        .export__file input {
-            display: none;
-        }
+	#content nav .nav-link {
+		display: none;
+	}
+}
 
-        .export__file .export__file-options {
-            position: absolute;
-            right: 0;
-            
-            width: 12rem;
-            border-radius: .5rem;
-            overflow: hidden;
-            text-align: center;
 
-            opacity: 0;
-            transform: scale(.8);
-            transform-origin: top right;
-            
-            box-shadow: 0 .2rem .5rem #0004;
-            
-            transition: .2s;
-        }
 
-        .export__file input:checked + .export__file-options {
-            opacity: 1;
-            transform: scale(1);
-            z-index: 100;
-        }
 
-        .export__file .export__file-options label{
-            display: block;
-            width: 100%;
-            padding: .6rem 0;
-            background-color: #f2f2f2;
-            
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
 
-            transition: .2s ease-in-out;
-        }
 
-        .export__file .export__file-options label:first-of-type{
-            padding: 1rem 0;
-            background-color: #86e49d !important;
-        }
+@media screen and (max-width: 576px) {
+	#content nav form .form-input input {
+		display: none;
+	}
 
-        .export__file .export__file-options label:hover{
-            transform: scale(1.05);
-            background-color: #fff;
-            cursor: pointer;
-        }
+	#content nav form .form-input button {
+		width: auto;
+		height: auto;
+		background: transparent;
+		border-radius: none;
+		color: var(--dark);
+	}
 
-        .export__file .export__file-options img{
-            width: 2rem;
-            height: auto;
-        }
+	#content nav form.show .form-input input {
+		display: block;
+		width: 100%;
+	}
+	#content nav form.show .form-input button {
+		width: 36px;
+		height: 100%;
+		border-radius: 0 36px 36px 0;
+		color: var(--light);
+		background: var(--red);
+	}
 
-    </style>
+	#content nav form.show ~ .notification,
+	#content nav form.show ~ .profile {
+		display: none;
+	}
+
+	#content main .box-info {
+		grid-template-columns: 1fr;
+	}
+
+	#content main .table-data .head {
+		min-width: 420px;
+	}
+	#content main .table-data .order table {
+		min-width: 420px;
+	}
+	#content main .table-data .todo .todo-list {
+		min-width: 420px;
+	}
+}
+	</style>
+
+	<title>Danh Sách Trực</title>
 </head>
-
 <body>
-    <main class="table" id="customers_table">
-        <section class="table__header center_header">
-            <h1 style="text-align: center;">DANH SÁCH QUÂN NHÂN VÀO VIỆN</h1>
-            <div class="input-group">
-                <input type="search" placeholder="Tìm Kiếm...">
-                <img src="images/search.png" alt="">
-            </div>
-            <div class="export__file">
-                <label for="export-file" class="export__file-btn" title="Export File"></label>
-                <input type="checkbox" id="export-file">
-                <div class="export__file-options">
-                    <label>Xuất File &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
-                    <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
-                </div>
-            </div>
-        </section>
-        <section class="table__body">
-            <table>
-                <thead>
-                    <tr>
-                        <th> STT <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Họ tên <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Năm Sinh <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Cấp Bậc <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Chức Vụ <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Đơn Vị <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Lý Do Vào Viện <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Vào khoa <span class="icon-arrow">&UpArrow;</span></th>
-                    </tr>
-                </thead>
-               <tbody>
-    <tr>
-        <td>1</td>
-        <td>ĐỖ THANH ĐIỀN</td>
-        <td>1985</td>
-        <td>Thiếu tá</td>
-        <td>Trợ lý</td>
-        <td>Bộ Chỉ huy Biên phòng An Giang</td>
-        <td>Mệt</td>
-        <td>Khoa Nội Tim mạch - Hô hấp - Nội thận (A1)</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>THÁI HỮU HẬU</td>
-        <td>1998</td>
-        <td>Hạ sĩ</td>
-        <td>Chiến sĩ</td>
-        <td>Sư đoàn BB330, Quân khu 9</td>
-        <td>Đau ngực</td>
-        <td>Khoa Nội Tim mạch - Hô hấp - Nội thận (A1)</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>HUỲNH CHÍ THANH</td>
-        <td>2006</td>
-        <td>Hạ sĩ</td>
-        <td>Chiến sĩ</td>
-        <td>Bộ CHQS tỉnh An Giang</td>
-        <td>Đau răng</td>
-        <td>Khoa Răng Hàm Mặt (B8)</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>NGUYỄN QUỐC ĐẠT</td>
-        <td>2006</td>
-        <td>Trung sĩ</td>
-        <td>Chiến sĩ</td>
-        <td>Bộ CHQS tỉnh An Giang</td>
-        <td>Đau răng</td>
-        <td>Khoa Răng Hàm Mặt (B8)</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>HỒ VĂN ÚT EM</td>
-        <td>1981</td>
-        <td>Thiếu tá CN</td>
-        <td>Nhân viên Lái xe</td>
-        <td>Sư đoàn BB330, Quân khu 9</td>
-        <td>Đau hông lưng</td>
-        <td>Khoa Ngoại thận - Tiết niệu (B3)</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>NGÔ CHÍ CƯỜNG</td>
-        <td>1995</td>
-        <td>Đại úy</td>
-        <td>Cán Bộ</td>
-        <td>Bộ CHQS tỉnh An Giang</td>
-        <td>Đau hông lưng</td>
-        <td>Khoa Ngoại thận - Tiết niệu (B3)</td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>KIM MINH QUÝ</td>
-        <td>2005</td>
-        <td>Hạ sĩ</td>
-        <td>Chiến sĩ</td>
-        <td>Bộ CHQS tỉnh Vĩnh Long</td>
-        <td>Điều trị</td>
-        <td>Khoa Chấn thương chỉnh hình (B1)</td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>NGUYỄN DUY KHANH</td>
-        <td>2006</td>
-        <td>Hạ sĩ</td>
-        <td>Chiến sĩ</td>
-        <td>Sư đoàn BB330, Quân khu 9</td>
-        <td>Nấm da / viêm da nhiễm trùng</td>
-        <td>Khoa Truyền nhiễm - Da liễu - Dị ứng (A4)</td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>LÂM HỮU TÌNH</td>
-        <td>2006</td>
-        <td>Hạ sĩ</td>
-        <td>Chiến sĩ</td>
-        <td>Sư đoàn BB330, Quân khu 9</td>
-        <td>Nấm da / viêm da nhiễm trùng</td>
-        <td>Khoa Truyền nhiễm - Da liễu - Dị ứng (A4)</td>
-    </tr>
-    <tr>
-        <td>10</td>
-        <td>LÊ XUÂN ĐỨC</td>
-        <td>2006</td>
-        <td>Hạ sĩ</td>
-        <td>Chiến sĩ</td>
-        <td>Sư đoàn BB330, Quân khu 9</td>
-        <td>Nấm da / viêm da nhiễm trùng</td>
-        <td>Khoa Truyền nhiễm - Da liễu - Dị ứng (A4)</td>
-    </tr>
-    <tr>
-        <td>11</td>
-        <td>LƯƠNG TRẠNG</td>
-        <td>2006</td>
-        <td>Hạ sĩ</td>
-        <td>Chiến sĩ</td>
-        <td>Sư đoàn BB330, Quân khu 9</td>
-        <td>Viêm da nhiễm trùng / nấm da</td>
-        <td>Khoa Truyền nhiễm - Da liễu - Dị ứng (A4)</td>
-    </tr>
-    <tr>
-        <td>12</td>
-        <td>LÊ KHÁNH DUY</td>
-        <td>2004</td>
-        <td>Hạ sĩ</td>
-        <td>Chiến sĩ</td>
-        <td>Bộ CHQS tỉnh Vĩnh Long</td>
-        <td>Vết lỡ da + rỉ dịch mặt ngoài cẳng chân</td>
-        <td>Khoa Truyền nhiễm - Da liễu - Dị ứng (A4)</td>
-    </tr>
-    <tr>
-        <td>13</td>
-        <td>LÊ GIA HUY</td>
-        <td>2001</td>
-        <td>Trung sĩ</td>
-        <td>Chiến sĩ</td>
-        <td>Bộ CHQS tỉnh An Giang</td>
-        <td>Sẩn hồng ban hình tròn vùng mặt, cổ, đùi, bẹn</td>
-        <td>Khoa Truyền nhiễm - Da liễu - Dị ứng (A4)</td>
-    </tr>
-</tbody>
-            </table>
-        </section>
-    </main>
-    <script >
-    const search = document.querySelector('.input-group input'),
-        table_rows = document.querySelectorAll('tbody tr'),
-        table_headings = document.querySelectorAll('thead th');
-
-    // 1. Searching for specific data of HTML table
-    search.addEventListener('input', searchTable);
-
-    function searchTable() {
-        table_rows.forEach((row, i) => {
-            let table_data = row.textContent.toLowerCase(),
-                search_data = search.value.toLowerCase();
-
-            row.classList.toggle('hide', table_data.indexOf(search_data) < 0);
-            row.style.setProperty('--delay', i / 25 + 's');
-        })
-
-        document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
-            visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
-        });
-    }
-
-    // 2. Sorting | Ordering data of HTML table
-
-    table_headings.forEach((head, i) => {
-        let sort_asc = true;
-        head.onclick = () => {
-            table_headings.forEach(head => head.classList.remove('active'));
-            head.classList.add('active');
-
-            document.querySelectorAll('td').forEach(td => td.classList.remove('active'));
-            table_rows.forEach(row => {
-                row.querySelectorAll('td')[i].classList.add('active');
-            })
-
-            head.classList.toggle('asc', sort_asc);
-            sort_asc = head.classList.contains('asc') ? false : true;
-
-            sortTable(i, sort_asc);
-        }
-    })
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Danh Sách Trực</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Danh Sách Trực</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Trở Về</a>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="btn-download">
+					<i class='bx bxs-cloud-download' ></i>
+					<span class="text">Tải PDF</span>
+				</a>
+			</div>
 
 
-    function sortTable(column, sort_asc) {
-        [...table_rows].sort((a, b) => {
-            let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase(),
-                second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Danh Sách</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th>Họ Tên</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>
+									<p>Đại tá Trần Mạnh Hùng</p>
+								</td>
+							</tr>
 
-            return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
-        })
-            .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
-    }
+							<tr>
+								<td>2</td>
+								<td>
+									<p>Đại tá Nguyễn Tấn Phong</p>
+								</td>
+							</tr>
 
-    // 3. Converting HTML table to PDF
+							<tr>
+								<td>3</td>
+								<td>
+									<p>Đại tá Đặng Ngọc Thuyết</p>
+								</td>
+							</tr>
 
-    const pdf_btn = document.querySelector('#toPDF');
-    const customers_table = document.querySelector('#customers_table');
+							<tr>
+								<td>4</td>
+								<td>
+									<p>Đại tá Lê Trọng Quân</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="todo">
+					<div class="head">
+						<h3>Danh Sách</h3>
+						<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<div class="list-container">
+					<ul class="todo-list ">
+						<li class="completed">
+							<p>1. Trung tá CN Lê Thị Thùy Linh</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>2. Thiếu tá CN Lê Thị Xuân Phượng</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>3. Trung tá CN Bùi Thị Diệu Linh</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>4. Thiếu tá CN Nguyễn Thị Trúc Linh</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>5. Thiếu tá CN Nguyễn Thị Phượng Linh</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>6. Thiếu tá CN Đinh Công Bằng</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>7. Trung tá CN Nguyễn Thị Thanh Vân</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>8. Thiếu tá CN Tô Thị Thảo Nguyên</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>9. Trung tá CN Trần Kim Ngọc</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>10. Thượng tá CN Nguyễn Trúc Phương</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>11. Lê Như Mai</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>12. Hồ Thị Luyến</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+						<li class="completed">
+							<p>13. Võ Thái Triết</p>
+							<i class='bx bx-dots-vertical-rounded'></i>
+						</li>
+					</ul>
+					</div>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script >
+		const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+
+allSideMenu.forEach(item=> {
+	const li = item.parentElement;
+
+	item.addEventListener('click', function () {
+		allSideMenu.forEach(i=> {
+			i.parentElement.classList.remove('active');
+		})
+		li.classList.add('active');
+	})
+});
 
 
-    const toPDF = function (customers_table) {
-        const html_code = `
-        <!DOCTYPE html>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <main class="table" id="customers_table">${customers_table.innerHTML}</main>`;
 
-        const new_window = window.open();
-        new_window.document.write(html_code);
 
-        setTimeout(() => {
-            new_window.print();
-            new_window.close();
-        }, 400);
-    }
+// TOGGLE SIDEBAR
+const menuBar = document.querySelector('#content nav .bx.bx-menu');
+const sidebar = document.getElementById('sidebar');
 
-    pdf_btn.onclick = () => {
-        toPDF(customers_table);
-    }
+menuBar.addEventListener('click', function () {
+	sidebar.classList.toggle('hide');
+})
 
-    // 4. Converting HTML table to JSON
 
-    const json_btn = document.querySelector('#toJSON');
 
-    const toJSON = function (table) {
-        let table_data = [],
-            t_head = [],
 
-            t_headings = table.querySelectorAll('th'),
-            t_rows = table.querySelectorAll('tbody tr');
 
-        for (let t_heading of t_headings) {
-            let actual_head = t_heading.textContent.trim().split(' ');
 
-            t_head.push(actual_head.splice(0, actual_head.length - 1).join(' ').toLowerCase());
-        }
 
-        t_rows.forEach(row => {
-            const row_object = {},
-                t_cells = row.querySelectorAll('td');
+const searchButton = document.querySelector('#content nav form .form-input button');
+const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
+const searchForm = document.querySelector('#content nav form');
 
-            t_cells.forEach((t_cell, cell_index) => {
-                const img = t_cell.querySelector('img');
-                if (img) {
-                    row_object['customer image'] = decodeURIComponent(img.src);
-                }
-                row_object[t_head[cell_index]] = t_cell.textContent.trim();
-            })
-            table_data.push(row_object);
-        })
+searchButton.addEventListener('click', function (e) {
+	if(window.innerWidth < 576) {
+		e.preventDefault();
+		searchForm.classList.toggle('show');
+		if(searchForm.classList.contains('show')) {
+			searchButtonIcon.classList.replace('bx-search', 'bx-x');
+		} else {
+			searchButtonIcon.classList.replace('bx-x', 'bx-search');
+		}
+	}
+})
 
-        return JSON.stringify(table_data, null, 4);
-    }
 
-    json_btn.onclick = () => {
-        const json = toJSON(customers_table);
-        downloadFile(json, 'json')
-    }
 
-    // 5. Converting HTML table to CSV File
 
-    const csv_btn = document.querySelector('#toCSV');
 
-    const toCSV = function (table) {
-        // Code For SIMPLE TABLE
-        // const t_rows = table.querySelectorAll('tr');
-        // return [...t_rows].map(row => {
-        //     const cells = row.querySelectorAll('th, td');
-        //     return [...cells].map(cell => cell.textContent.trim()).join(',');
-        // }).join('\n');
+if(window.innerWidth < 768) {
+	sidebar.classList.add('hide');
+} else if(window.innerWidth > 576) {
+	searchButtonIcon.classList.replace('bx-x', 'bx-search');
+	searchForm.classList.remove('show');
+}
 
-        const t_heads = table.querySelectorAll('th'),
-            tbody_rows = table.querySelectorAll('tbody tr');
 
-        const headings = [...t_heads].map(head => {
-            let actual_head = head.textContent.trim().split(' ');
-            return actual_head.splice(0, actual_head.length - 1).join(' ').toLowerCase();
-        }).join(',') + ',' + 'image name';
+window.addEventListener('resize', function () {
+	if(this.innerWidth > 576) {
+		searchButtonIcon.classList.replace('bx-x', 'bx-search');
+		searchForm.classList.remove('show');
+	}
+})
 
-        const table_data = [...tbody_rows].map(row => {
-            const cells = row.querySelectorAll('td'),
-                img = decodeURIComponent(row.querySelector('img').src),
-                data_without_img = [...cells].map(cell => cell.textContent.replace(/,/g, ".").trim()).join(',');
 
-            return data_without_img + ',' + img;
-        }).join('\n');
 
-        return headings + '\n' + table_data;
-    }
+const switchMode = document.getElementById('switch-mode');
 
-    csv_btn.onclick = () => {
-        const csv = toCSV(customers_table);
-        downloadFile(csv, 'csv', 'customer orders');
-    }
-
-    // 6. Converting HTML table to EXCEL File
-
-    const excel_btn = document.querySelector('#toEXCEL');
-
-    const toExcel = function (table) {
-
-        const t_heads = table.querySelectorAll('th'),
-            tbody_rows = table.querySelectorAll('tbody tr');
-
-        const headings = [...t_heads].map(head => {
-            let actual_head = head.textContent.trim().split(' ');
-            return actual_head.splice(0, actual_head.length - 1).join(' ').toLowerCase();
-        }).join('\t') + '\t' + 'image name';
-
-        const table_data = [...tbody_rows].map(row => {
-            const cells = row.querySelectorAll('td'),
-                img = decodeURIComponent(row.querySelector('img').src),
-                data_without_img = [...cells].map(cell => cell.textContent.trim()).join('\t');
-
-            return data_without_img + '\t' + img;
-        }).join('\n');
-
-        return headings + '\n' + table_data;
-    }
-
-    excel_btn.onclick = () => {
-        const excel = toExcel(customers_table);
-        downloadFile(excel, 'excel');
-    }
-
-    const downloadFile = function (data, fileType, fileName = '') {
-        const a = document.createElement('a');
-        a.download = fileName;
-        const mime_types = {
-            'json': 'application/json',
-            'csv': 'text/csv',
-            'excel': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        }
-        a.href = `
-            data:${mime_types[fileType]};charset=utf-8,${encodeURIComponent(data)}
-        `;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-    }
-
-    </script>
-
+switchMode.addEventListener('change', function () {
+	if(this.checked) {
+		document.body.classList.add('dark');
+	} else {
+		document.body.classList.remove('dark');
+	}
+})
+	</script>
 </body>
-
 </html>
